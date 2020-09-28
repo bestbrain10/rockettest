@@ -20,17 +20,31 @@ The project is written in typescript. To run, it has to first be built to ES5(Ja
 
 - run `npm run build`
 
+#### Running Application as CLI
+
+The project can be run as a CLI application using:
+
+- `npm run cli -- --input <path to file>`
+
 
 #### Running Application as API Locally
 
  - Run `npm run start`
 
- - Alternatively, if you want to make changes and see your changes immiediately you make them then start the application in development mode using `npm run start:dev`
+ - Alternatively, if you want to make changes and see your changes immiediately you make them then start the application in development mode using `npm run start:dev -- --mode server`
 
  - From your browser or rest client visit `http://localhost:3000`
 
- ##### API Endpoints
+ ##### API Endpoint
 
-- *POST* `/tasks`
+- *POST* `/analyze/tasks`
+- *params* input
 
-- *POST* `/analyze`
+#### Running Application as Vest.com
+
+- From your browser or rest client visit `http://localhost:3000`
+
+ ##### API Endpoint
+
+- *POST* `/analyze/tasks`
+- *params* input
