@@ -14,13 +14,23 @@ This application is written with NodeJS using typescript.
 
     - `npm install`
 
-    - `npm run start`
-
-    - Additionally, if you want to make changes and see your changes immiediately you make them then start the application in development mode using `npm run start:dev`
-
 ### Building the project
 
 The project is written in typescript. To run, it has to first be built to ES5(Javascript) in the `build` folder.
 
 - run `npm run build`
 
+
+#### Running Application as API Locally
+
+ - Run `npm run start`
+
+ - Alternatively, if you want to make changes and see your changes immiediately you make them then start the application in development mode using `npm run start:dev`
+
+ - From your browser or rest client visit `http://localhost:3000`
+
+ ##### API Endpoints
+
+- *POST* `/tasks`
+
+- *POST* `/analyze`
