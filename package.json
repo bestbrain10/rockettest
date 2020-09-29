@@ -2,15 +2,15 @@
   "name": "rocketchattest",
   "version": "1.0.0",
   "description": "User Activity Analysis and Report",
-  "main": "build/index.js",
+  "main": "api/index.js",
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watchAll",
     "coverage": "jest --coverage",
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/index.js --mode server",
-    "cli": "npm run build && node build/index.js --mode cli"
+    "start": "npm run build && node api/index.js --mode server",
+    "cli": "npm run build && node api/index.js --mode cli"
   },
   "keywords": [],
   "author": "",
