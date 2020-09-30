@@ -34,9 +34,9 @@ if (require.main === module) {
     if(Object.keys(argv).includes('input')){
         try{
             // tslint:disable-next-line: no-console
-            console.log(
-                cliFunction(argv.input)
-            );
+            cliFunction(argv.input).then(e => console.log(e))
+                // tslint:disable-next-line: no-console
+                .catch(e => console.error(e.toString()));
         } catch(e) {
             // tslint:disable-next-line: no-console
             console.error(e.toString());
