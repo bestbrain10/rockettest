@@ -10,7 +10,7 @@
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc",
     "start": "npm run build && vercel dev",
-    "cli": "npm run build && node build/cli.js --"
+    "cli": "ts-node src/cli.ts"
   },
   "keywords": [],
   "author": "",

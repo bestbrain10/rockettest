@@ -6,40 +6,45 @@ import * as minimist from 'minimist';
 const argv = minimist.default((process.argv.slice(2)));
 
 
-const cliFunction = async (input: string): Promise<void> => {
+const cliFunction = async (input: string): Promise<string> => {
 
     if(!input) {
-        // tslint:disable-next-line: no-console
-        console.error(`No input recieved, send an input text file using the '--input' flag`);
+        throw new Error(`No input recieved, send an input text file using the '--input' flag`);
     }
 
-    if(!fs.existsSync(input)){
-        // tslint:disable-next-line: no-console
-        console.error(`Could not locate specified input file`);
+    try{
+        if(!fs.existsSync(input)){
+            throw new Error(`Could not locate specified input file`);
+        }
+    } catch(e) {
+        throw new Error(`Could not locate specified input file`);
     }
 
+    const fileInput = await readFile(input, 'utf-8');
 
-    const fileInput = await readFile(input, {
-        encoding: 'utf-8'
-    });
-
-
-    try {
-        const response = outputToString(
-            analyze(
-                extractInput(input)
-            )
-        );
-        // tslint:disable-next-line: no-console
-        console.log(response);
-    } catch (e) {
-        // tslint:disable-next-line: no-console
-        console.error(e.toString);
-    }
+    return outputToString(
+        analyze(
+            extractInput(fileInput)
+        )
+    );
 };
 
-if(Object.keys(argv).includes('input')){
-    cliFunction(argv.input);
+
+if (require.main === module) {
+    if(Object.keys(argv).includes('input')){
+        try{
+            // tslint:disable-next-line: no-console
+            console.log(
+                cliFunction(argv.input)
+            );
+        } catch(e) {
+            // tslint:disable-next-line: no-console
+            console.error(e.toString());
+        }
+    } else {
+            // tslint:disable-next-line: no-console
+            console.error(`No input recieved, send an input text file using the '--input' flag`);
+    }
 }
 
 export default cliFunction;

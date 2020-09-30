@@ -55,7 +55,7 @@ The project is written in typescript. To run, it has to first be built to ES5(Ja
 
 The project can be run as a CLI application using:
 
-- `npm run cli -- --input <path to file>`
+- `npm run cli -- --input <path to input file>`
 
 
 
@@ -102,12 +102,36 @@ US 10.00
 
 ## Running Application as Vest.com
 
-- From your browser or rest client visit `http://localhost:3000`
+- From your browser or rest client visit `https://rockettest.vercel.app`
 
  #### API Endpoint
 
 - *POST* `/analyze/tasks`
 - *params* input
+
+**Sample of the request format**
+
+```sh
+curl --location --request POST 'https://rockettest.vercel.app/analyze/tasks' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'input=2
+1 PT
+2 US
+3
+1 1 10
+2 1 5
+3 2 10'
+
+```
+
+**Sample of the response format**
+
+```
+1 7.50
+2 10.00
+PT 7.50
+US 10.00
+```
 
 
 

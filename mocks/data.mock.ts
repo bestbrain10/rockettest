@@ -1,4 +1,6 @@
 
+import fs from 'fs';
+
 export const expectedOutput = `
 1 7.50
 2 10.00
@@ -33,6 +35,13 @@ Example:
 2 1 5
 3 2 10
 `;
+
+export const writeImage = (filePath) => {
+    const img = "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAKElEQVQ4jWNgYGD4Twzu6FhFFGYYNXDUwGFpIAk2E4dHDRw1cDgaCAASFOffhEIO3gAAAABJRU5ErkJggg==";
+    const buf = Buffer.from(img, 'base64');
+    fs.writeFileSync(filePath, buf);
+};
+
 
 export const inputLessThanFourLines = `
 2
