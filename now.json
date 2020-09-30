@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "nodejs-express",
+    "name": "Rocket App",
     "builds": [{
         "src": "/build/server.js",
         "use": "@now/node"
