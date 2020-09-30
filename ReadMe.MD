@@ -65,7 +65,7 @@ The project can be run as a CLI application using:
 
  - From your browser or REST client visit `http://localhost:3000`
 
- - If you make any changes, you will have to first close the running server, and the start it again using `npm run start`
+ - If you make any changes, you will have to first close the running server, and the start it again using `npm run start`.
 
 
 
