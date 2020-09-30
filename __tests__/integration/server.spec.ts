@@ -17,28 +17,29 @@ describe('Server', () => {
     afterAll(() => {
         server.close();
     });
+
     // is called with
     test('is function', () => {
         expect(serverLamda).toBeDefined();
         expect(typeof serverLamda).toEqual('function');
     });
 
-    test('empty body param triggers error', async () => {
-        const response =  axios.post(url, { });
-        expect(response).rejects.toThrow(apiErrorResponse);
+    test('empty body param triggers error', () => {
+        const response = () => axios.post(url, { });
+        expect(response()).rejects.toThrow(apiErrorResponse);
     });
 
-    test('empty input body param triggers error', async () => {
-        const response = axios.post(url, { input: ''});
-        expect(response).rejects.toThrow(apiErrorResponse);
+    test('empty input body param triggers error', () => {
+        const response = () => axios.post(url, { input: ''});
+        expect(response()).rejects.toThrow(apiErrorResponse);
     });
 
-    test('invalid input triggers error', async () => {
-        const response =  axios.post(url, { input: inputLessThanFourLines });
-        expect(response).rejects.toThrow();
+    test('invalid input triggers error', () => {
+        const response =  () => axios.post(url, { input: inputLessThanFourLines });
+        expect(response()).rejects.toThrow();
     });
 
-    test('valid input returns valid output', async () => {
+    test('valid input returns valid output', () => {
         const response = axios.post(url, { input: validInput });
         expect(response).resolves.toBe(expectedOutput);
     });
