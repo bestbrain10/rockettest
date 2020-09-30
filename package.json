@@ -9,6 +9,7 @@
     "coverage": "jest --coverage",
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc",
+    "vercel-build": "npm run build",
     "start": "npm run build && vercel dev",
     "cli": "ts-node src/cli.ts"
   },
