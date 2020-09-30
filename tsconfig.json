@@ -4,7 +4,7 @@
         "module": "commonjs",
         "lib": ["es6"],
         "allowJs": true,
-        "outDir": "api",
+        "outDir": "build",
         "strict": true,
         "noImplicitAny": true,
         "esModuleInterop": true,
@@ -12,6 +12,7 @@
     },
     "exclude": [
         "node_modules",
+        "mocks",
         "__tests__"
     ],
     "include": [

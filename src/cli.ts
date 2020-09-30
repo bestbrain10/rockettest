@@ -2,20 +2,20 @@ import { outputToString, analyze, extractInput } from "./util";
 import fs from 'fs';
 import { promisify } from 'util';
 const readFile = promisify(fs.readFile);
+import * as minimist from 'minimist';
+const argv = minimist.default((process.argv.slice(2)));
 
 
-export default async (input: string): Promise<void> => {
+const cliFunction = async (input: string): Promise<void> => {
 
     if(!input) {
         // tslint:disable-next-line: no-console
         console.error(`No input recieved, send an input text file using the '--input' flag`);
-        return;
     }
 
     if(!fs.existsSync(input)){
         // tslint:disable-next-line: no-console
         console.error(`Could not locate specified input file`);
-        return;
     }
 
 
@@ -27,7 +27,7 @@ export default async (input: string): Promise<void> => {
     try {
         const response = outputToString(
             analyze(
-                extractInput(fileInput)
+                extractInput(input)
             )
         );
         // tslint:disable-next-line: no-console
@@ -37,3 +37,9 @@ export default async (input: string): Promise<void> => {
         console.error(e.toString);
     }
 };
+
+if(Object.keys(argv).includes('input')){
+    cliFunction(argv.input);
+}
+
+export default cliFunction;

@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "name": "nodejs-express",
+    "builds": [{
+        "src": "build/server.js",
+        "use": "@now/node"
+    }],
+    "routes": [{
+        "src": "/analyze/tasks",
+        "dest": "build/server.js"
+    }]
+}
