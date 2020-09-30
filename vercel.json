@@ -2,11 +2,12 @@
     "version": 2,
     "name": "Rocket App",
     "builds": [{
-        "src": "/build/server.js",
-        "use": "@now/node"
+        "src": "build/*.js",
+        "use": "@vercel/node"
     }],
     "routes": [{
         "src": "/analyze/tasks",
-        "dest": "/build/server.js"
+        "methods": ["POST"],
+        "dest": "build/server.js"
     }]
 }
